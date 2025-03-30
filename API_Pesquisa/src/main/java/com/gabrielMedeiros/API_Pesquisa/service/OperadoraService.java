@@ -13,9 +13,18 @@ public class OperadoraService {
     @Autowired
     private OperadoraRepository repository;
 
-    public List<Operadora> buscarPorTermo(String termo) {
-        String like = "%" + termo.trim().toLowerCase() + "%";
-        return repository.buscarPorTermo(like);
+
+    public List<Operadora> buscarComFiltros(String termo, String cidade, String uf) {
+        if (termo != null && !termo.isBlank()) {
+            termo = "%" + termo.trim().toLowerCase() + "%";
+        } else {
+            termo = null;
+        }
+
+        cidade = (cidade == null || cidade.isBlank()) ? null : cidade.trim();
+        uf = (uf == null || uf.isBlank()) ? null : uf.trim();
+
+        return repository.buscarComFiltros(termo, cidade, uf);
     }
 
 

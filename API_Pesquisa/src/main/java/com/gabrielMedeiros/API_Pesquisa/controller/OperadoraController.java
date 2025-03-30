@@ -17,8 +17,12 @@ public class OperadoraController {
     private OperadoraService service;
 
     @GetMapping("/busca")
-    public ResponseEntity<List<OperadoraDTO>> buscarOperadoras(@RequestParam String termo){
-        List<Operadora> operadoras = service.buscarPorTermo(termo);
+    public ResponseEntity<List<OperadoraDTO>> buscarOperadoras(
+            @RequestParam(required = false) String termo,
+            @RequestParam(required = false) String cidade,
+            @RequestParam(required = false) String uf
+    ){
+        List<Operadora> operadoras = service.buscarComFiltros(termo, cidade, uf);
 
         List<OperadoraDTO> dtos = operadoras.stream()
                 .map(OperadoraDTO::new)
