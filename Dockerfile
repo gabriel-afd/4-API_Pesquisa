@@ -1,7 +1,7 @@
 # Etapa 1: Build com Maven
 FROM maven:3.9.4-eclipse-temurin-21 AS build
 WORKDIR /app
-COPY . .
+COPY ./API_Pesquisa /app
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Runtime com JDK 21
