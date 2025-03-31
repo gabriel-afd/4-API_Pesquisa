@@ -134,6 +134,20 @@ CREATE TABLE operadoras (
 
 Clique com o botão direito na tabela `operadoras` no pgAdmin → **Import/Export** → selecione o CSV fornecido no desafio e insira os dados corretamente.
 
+![image](https://github.com/user-attachments/assets/9f831140-c21c-4dd7-81c4-464b6e789d94)
+
+- Filename: copie o caminho do seu arquivo .csv
+- Format: csv
+- Enconding: UTF8
+- 
+  ![image](https://github.com/user-attachments/assets/6226e525-f1e3-4222-9c15-769688223aef)
+
+- Header: deixe essa opção ativa
+- Delimiter: o delimitador deverá ser ";"
+
+  ![image](https://github.com/user-attachments/assets/cd93a568-fa23-4cb0-8ec5-03cfb3972bf7)
+
+
 4. **Atualize o arquivo `application.properties`:**
 
 ```properties
