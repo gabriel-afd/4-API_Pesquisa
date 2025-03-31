@@ -6,7 +6,7 @@ Este projeto consiste em uma API REST desenvolvida com Java e Spring Boot para r
 
 ## 📌 Descrição Geral
 
-Esta API permite realizar buscas por operadoras de saúde utilizando diferentes filtros, como:
+Esta API permite realizar buscas por operadoras de saúde utilizando diferentes filtros(pode ser configurado para mais filtros ao expandir a quantidade de atributos da classe DTO). Aqui adotou-se como registros relevantes:
 
 - Nome fantasia
 - Razão social
@@ -46,28 +46,104 @@ A interface web que consome esta API está publicada no Render e pode ser acessa
 
 ---
 
-## 🧪 Enunciado do Desafio Técnico
+### 📎 JSON da Coleção (Importar via Raw Text no Postman)
 
-O projeto atende ao seguinte item do desafio:
+<details>
+<summary><strong>Clique para expandir o JSON</strong></summary>
 
-**4. TESTE DE API**  
-Desenvolva uma interface web usando Vue.js que interaja com um servidor em Python (adaptado para Java Spring Boot neste projeto) para realizar as tarefas abaixo:
+```json
+{
+  "info": {
+    "name": "Pesquisa Operadoras",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Buscar por termo",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/operadoras/busca?termo=dentalmaster",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["operadoras", "busca"],
+          "query": [{"key": "termo", "value": "dentalmaster"}]
+        }
+      }
+    },
+    {
+      "name": "Buscar por UF",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/operadoras/busca?uf=MG",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["operadoras", "busca"],
+          "query": [{"key": "uf", "value": "MG"}]
+        }
+      }
+    },
+    {
+      "name": "Buscar por cidade",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/operadoras/busca?cidade=Fortaleza",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["operadoras", "busca"],
+          "query": [{"key": "cidade", "value": "Fortaleza"}]
+        }
+      }
+    },
+    {
+      "name": "Buscar por UF + Cidade",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/operadoras/busca?uf=CE&cidade=Fortaleza",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["operadoras", "busca"],
+          "query": [
+            {"key": "uf", "value": "CE"},
+            {"key": "cidade", "value": "Fortaleza"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar por termo + cidade + UF",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/operadoras/busca?termo=dental&uf=PB&cidade=João Pessoa",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["operadoras", "busca"],
+          "query": [
+            {"key": "termo", "value": "dental"},
+            {"key": "uf", "value": "MG"},
+            {"key": "cidade", "value": "São Lourenço"}
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
-- **4.1** Utilizar o CSV do item 3.2 (cadastro de operadoras).
-- **4.2** Criar uma rota de busca textual nos cadastros de operadoras.
-- **4.3** Elaborar uma coleção no Postman para demonstrar os resultados.
+</details>
 
-📁 A coleção Postman foi criada com as seguintes requisições de teste:
-
-- `GET /operadoras/busca?termo=dentalmaster`
-- `GET /operadoras/busca?uf=MG`
-- `GET /operadoras/busca?cidade=Fortaleza`
-- `GET /operadoras/busca?uf=CE&cidade=Fortaleza`
-- `GET /operadoras/busca?termo=dental&uf=MG&cidade=São Lourenço`
-
-Essas requisições podem ser salvas no Postman em uma coleção chamada **Pesquisa Operadoras** para facilitar a reutilização e o compartilhamento com outros usuários.
+✅ Para importar no Postman:
+1. Clique em **Import**;
+2. Vá na aba **Raw Text**;
+3. Cole o JSON acima;
+4. Clique em **Continue > Import**.
 
 ---
+
 
 ## 🧱 Arquitetura Adotada: MVC
 
@@ -78,6 +154,7 @@ O projeto segue a arquitetura Model-View-Controller:
 - **Repository:** Interface `OperadoraRepository` com query nativa SQL.
 - **Service:** Classe `OperadoraService`, contendo a lógica de filtragem.
 - **Controller:** Classe `OperadoraController`, expõe a rota `/operadoras/busca`.
+- **Config:** Classe `corsConfigurer` para ajustes de CORS. Classe `SpringDocConfig` para documentação da API
 
 ---
 
@@ -213,11 +290,29 @@ A API está hospedada no [Render](https://render.com/). O processo de deploy env
 
 ## 🧭 Documentação da API com Swagger
 
-Acesse a documentação completa da API em:
+Rode a API e acesse a documentação completa em:
 
 ```
 http://localhost:8080/swagger-ui/index.html
+
 ```
+<img src="https://github.com/user-attachments/assets/824c604b-d414-4ec9-a8c4-ae553dea2536" width="500"/>
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- Java 17
+- Spring Boot
+- PostgreSQL
+- JPA / Hibernate
+- Maven
+- Swagger OpenAPI 3
+- JUnit 5
+- Mockito
+- Render (para deploy)
+- Postman (testes de requisição)
+- Docker (opcional)
 
 ---
 
@@ -228,6 +323,4 @@ http://localhost:8080/swagger-ui/index.html
 gmedeiros144@gmail.com
 
 ---
-
-Se achou útil, deixe uma ⭐ no repositório! 😉
 
