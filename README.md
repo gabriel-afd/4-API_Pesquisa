@@ -134,7 +134,7 @@ CREATE TABLE operadoras (
 
 Clique com o botão direito na tabela `operadoras` no pgAdmin → **Import/Export** → selecione o CSV fornecido no desafio e insira os dados corretamente.
 
-![image](https://github.com/user-attachments/assets/9f831140-c21c-4dd7-81c4-464b6e789d94)
+<img src="https://github.com/user-attachments/assets/9f831140-c21c-4dd7-81c4-464b6e789d94" width="400"/>
 
 - Filename: copie o caminho do seu arquivo .csv
 - Format: csv
