@@ -134,19 +134,35 @@ CREATE TABLE operadoras (
 
 Clique com o botão direito na tabela `operadoras` no pgAdmin → **Import/Export** → selecione o CSV fornecido no desafio e insira os dados corretamente.
 
-<img src="https://github.com/user-attachments/assets/9f831140-c21c-4dd7-81c4-464b6e789d94" height="200" width="400"/>
+<img src="https://github.com/user-attachments/assets/9f831140-c21c-4dd7-81c4-464b6e789d94" width="300"/>
 
 - Filename: copie o caminho do seu arquivo .csv
 - Format: csv
 - Enconding: UTF8
-- 
-  ![image](https://github.com/user-attachments/assets/6226e525-f1e3-4222-9c15-769688223aef)
+
+  <img src="https://github.com/user-attachments/assets/6226e525-f1e3-4222-9c15-769688223aef" width="500"/>
+  
 
 - Header: deixe essa opção ativa
 - Delimiter: o delimitador deverá ser ";"
 
-  ![image](https://github.com/user-attachments/assets/cd93a568-fa23-4cb0-8ec5-03cfb3972bf7)
+<img src="https://github.com/user-attachments/assets/cd93a568-fa23-4cb0-8ec5-03cfb3972bf7" width="500"/>
 
+
+**Se quiser importar o arquivo .csv automaticamente para o banco de dados, use o seguinte código no pgAdmin**
+
+```
+COPY operadoras
+FROM 'F:/IntuitiveCare-MySQL/Relatorio de operadoras ativas/Relatorio_cadop.csv'
+WITH (
+    FORMAT csv,
+    DELIMITER ';',
+    HEADER true,
+    ENCODING 'UTF8',
+    QUOTE '"'
+);
+
+```
 
 4. **Atualize o arquivo `application.properties`:**
 
