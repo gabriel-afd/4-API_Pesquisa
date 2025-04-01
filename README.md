@@ -172,8 +172,7 @@ O projeto segue a arquitetura Model-View-Controller:
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/API_Pesquisa.git
-cd API_Pesquisa
+git clone https://github.com/gabriel-afd/4-API_Pesquisa.git
 ```
 
 2. **Configure o banco de dados no PostgreSQL:**
